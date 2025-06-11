@@ -44,11 +44,11 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
-                "gopls",
                 'clangd',
                 'pyright',
                 'terraformls',
-                'ts_ls',
+                'dockerls',
+                'docker_compose_language_service',
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -143,4 +143,5 @@ return {
             severity_sort = true,
         })
     end
+
 }

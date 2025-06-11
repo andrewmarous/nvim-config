@@ -47,6 +47,10 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
+vim.keymap.set("v", "<leader>s", [[
+  :<C-u>execute 'normal! y'<CR>:%s/\V<C-r>\"//gI<Left><Left><Left>
+]], { silent = true, desc = "Visual: search&replace selection" })
+
 vim.keymap.set(
     "n",
     "<leader>ee",
@@ -78,3 +82,5 @@ end)
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+vim.keymap.set('n', '<leader>w', vim.cmd.w)

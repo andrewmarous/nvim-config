@@ -68,3 +68,34 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
+autocmd('FileType', {
+    group = AndrewMarousGroup,
+    pattern = 'terraform',
+    callback = function()
+        vim.keymap.set('v', '<leader>c', ':s/^/# /<CR>', { buffer = true, silent = true })
+    end
+})
+
+autocmd('FileType', {
+    group = AndrewMarousGroup,
+    pattern = 'terraform',
+    callback = function()
+        vim.keymap.set('v', '<leader>u', ':s/^# //<CR>', { buffer = true, silent = true })
+    end
+})
+
+autocmd('FileType', {
+    group = AndrewMarousGroup,
+    pattern = 'python',
+    callback = function()
+        vim.keymap.set('v', '<leader>c', ':s/^/# /<CR>', { buffer = true, silent = true })
+    end
+})
+
+autocmd('FileType', {
+    group = AndrewMarousGroup,
+    pattern = 'python',
+    callback = function()
+        vim.keymap.set('v', '<leader>u', ':s/^# //<CR>', { buffer = true, silent = true })
+    end
+})

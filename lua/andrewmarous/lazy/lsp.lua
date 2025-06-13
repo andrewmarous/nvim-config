@@ -49,6 +49,7 @@ return {
                 'terraformls',
                 'dockerls',
                 'docker_compose_language_service',
+                'yamlls',
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -66,6 +67,17 @@ return {
                                 enable_inlay_hints = true,
                                 enable_snippets = true,
                                 warn_style = true,
+                            },
+                        },
+                    })
+                    lspconfig.yamlls.setup({
+                        settings = {
+                            yaml = {
+                                validate = true,
+                                schemaStore = { enable = false, url = "" },
+                                schemas = {
+                                    ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*.{yml,yaml}"
+                                },
                             },
                         },
                     })

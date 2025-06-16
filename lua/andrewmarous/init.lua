@@ -40,8 +40,6 @@ autocmd('BufEnter', {
     callback = function()
         if vim.bo.filetype == "zig" then
             vim.cmd.colorscheme("tokyonight-night")
-        else
-            ColorMyPencils()
         end
     end
 })

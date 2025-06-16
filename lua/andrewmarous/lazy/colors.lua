@@ -1,10 +1,12 @@
 function ColorMyPencils(color)
-    color = color or 'kanagawa'
+    color = color or 'gruvbox'
     vim.cmd.colorscheme(color)
 end
 
-return {
+-- Make the function globally accessible
+_G.ColorMyPencils = ColorMyPencils
 
+return {
     {
         "ellisonleao/gruvbox.nvim",
         name = "gruvbox",

@@ -43,13 +43,14 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
                 'clangd',
-                'pyright',
+                'rust_analyzer',
+                'ruff',
                 'terraformls',
                 'dockerls',
                 'docker_compose_language_service',
                 'yamlls',
+                'bashls'
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -104,6 +105,11 @@ return {
                         }
                     }
                 end,
+                ruff = function()
+                    require("lspconfig").ruff.setup({
+                        capabilities = capabilities,
+                    })
+                end
             }
         })
 

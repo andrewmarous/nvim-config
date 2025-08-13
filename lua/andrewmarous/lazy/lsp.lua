@@ -101,6 +101,11 @@ return {
                                         indent_size = "2",
                                     }
                                 },
+                                diagnostics = {
+                                    globals = {
+                                        'vim'
+                                    }
+                                }
                             }
                         }
                     }

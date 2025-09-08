@@ -45,7 +45,8 @@ return {
                 "lua_ls",
                 'clangd',
                 'rust_analyzer',
-                'ruff',
+                'pyright',
+                'ruff', -- ruff alone doesn't support hover, but has nice warnings
                 'terraformls',
                 'dockerls',
                 'docker_compose_language_service',

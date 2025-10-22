@@ -1,7 +1,8 @@
 function ColorMyPencils(color)
-    color = color or 'gruvbox'
+    color = color or 'tokyonight'
     vim.cmd.colorscheme(color)
 end
+
 
 -- Make the function globally accessible
 _G.ColorMyPencils = ColorMyPencils

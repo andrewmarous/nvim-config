@@ -43,8 +43,8 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                'clangd',
                 'rust_analyzer',
+                'clangd',
                 'ruff',
                 'terraformls',
                 'dockerls',
@@ -56,6 +56,17 @@ return {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
+                    }
+                end,
+                clangd = function()
+                    local lspconfig = require('lspconfig')
+                    lspconfig.clangd.setup{
+                        cmd = {
+                            vim.fn.stdpath('data') .. '/mason/bin/clangd',
+                            '--background-index',
+                            '--clang-tidy',
+                            '--query-driver=/usr/bin/clang++,/usr/bin/clang,/opt/homebrew/opt/llvm/bin/*',
+                        }
                     }
                 end,
 

@@ -1,12 +1,22 @@
 require('andrewmarous.set')
 require('andrewmarous.remap')
-require('andrewmarous.lazy_init')
 
 local augroup = vim.api.nvim_create_augroup
 local AndrewMarousGroup = augroup('AndrewMarous', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
+
+autocmd('ColorScheme', {
+    group = AndrewMarousGroup,
+    callback = function()
+        local cursor_bg = vim.o.background == 'light' and '#000000' or '#ffffff'
+        local cursor_fg = vim.o.background == 'light' and '#ffffff' or '#000000'
+        vim.api.nvim_set_hl(0, "Cursor", { fg = cursor_fg, bg = cursor_bg, force = true })
+    end,
+})
+
+require('andrewmarous.lazy_init')
 
 function R(name)
 	require('plenary.reload').reload_module(name)

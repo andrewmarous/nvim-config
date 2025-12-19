@@ -21,6 +21,8 @@ vim.keymap.set("n", "<leader>svwm", function()
     require("vim-with-me").StopVimWithMe()
 end)
 
+-- i'm too lazy to go into the terminal
+
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 

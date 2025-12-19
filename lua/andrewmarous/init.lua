@@ -10,9 +10,8 @@ local yank_group = augroup('HighlightYank', {})
 autocmd('ColorScheme', {
     group = AndrewMarousGroup,
     callback = function()
-        local cursor_bg = vim.o.background == 'light' and '#000000' or '#ffffff'
-        local cursor_fg = vim.o.background == 'light' and '#ffffff' or '#000000'
-        vim.api.nvim_set_hl(0, "Cursor", { fg = cursor_fg, bg = cursor_bg, force = true })
+        local c = vim.o.background == 'light' and '#b6b8b6' or '#000000'
+        vim.api.nvim_set_hl(0, "Cursor", { fg = c, bg = c, force = true })
     end,
 })
 

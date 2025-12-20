@@ -24,7 +24,9 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
     },
-
+    opts = {
+        enable_inlay_hints = true
+    },
     config = function()
         require("conform").setup({
             formatters_by_ft = {
@@ -44,14 +46,15 @@ return {
             ensure_installed = {
                 "lua_ls",
                 'rust_analyzer',
-                'pyright',
+                'basedpyright',
                 'clangd',
                 'ruff',
                 'terraformls',
                 'dockerls',
                 'docker_compose_language_service',
                 'yamlls',
-                'bashls'
+                'bashls',
+                'ocamllsp',
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -98,7 +101,7 @@ return {
                     vim.g.zig_fmt_autosave = 0
 
                 end,
-                ["lua_ls"] = function()
+                lua_ls = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
                         capabilities = capabilities,
@@ -117,7 +120,8 @@ return {
                                     globals = {
                                         'vim'
                                     }
-                                }
+                                },
+                                hint = { enable = true }
                             }
                         }
                     }
@@ -126,7 +130,18 @@ return {
                     require("lspconfig").ruff.setup({
                         capabilities = capabilities,
                     })
-                end
+                end,
+                ocamllsp = {
+                    cmd = { "ocamllsp" },
+                    filetypes = { "ocaml", "menhir", "ocamlinterface", "ocamlocamllex",
+                        "reason", "dune" },
+                    settings = {
+                        codelens = { enable = true },
+                        inlayHints = { hintPatternVariables = true, hintLetBindings = true },
+                        extendedHover = { enable = true },
+                        syntaxDocumentation = { enable = true },
+                    }
+                },
             }
         })
 

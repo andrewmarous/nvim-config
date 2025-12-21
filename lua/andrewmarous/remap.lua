@@ -86,3 +86,19 @@ vim.keymap.set("n", "<leader><leader>", function()
 end)
 
 vim.keymap.set('n', '<leader>w', vim.cmd.w)
+
+-- theme switching hell yeah
+local light_cursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr:hor20,o:hor50"
+vim.keymap.set(
+    "n",
+    "<leader>bb",
+    function ()
+        if vim.o.background == 'light' then
+            vim.o.background = 'dark'
+            vim.o.guicursor = ''
+        elseif vim.o.background == 'dark' then
+            vim.o.background = 'light'
+            vim.o.guicursor = light_cursor
+        end
+    end
+)

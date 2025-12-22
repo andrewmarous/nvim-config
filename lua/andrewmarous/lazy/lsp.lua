@@ -25,7 +25,12 @@ return {
         "j-hui/fidget.nvim",
     },
     opts = {
-        enable_inlay_hints = true
+        enable_inlay_hints = true,
+        servers = {
+            sourcekit = {
+                cmd = { "usr/bin/sourcekit-lsp" },
+            }
+        },
     },
     config = function()
         require("conform").setup({
@@ -39,6 +44,15 @@ return {
             {},
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
+
+        -- swift is weird
+        -- FIX: refactor so this doesn't use require("lspconfig")
+        require("lspconfig").sourcekit.setup({
+            capabilities = capabilities,
+            cmd = { "xcrun", "sourcekit-lsp" },
+            filetypes = { "swift", "objective-c", "objective-cpp" },
+            root_dir = require("lspconfig").util.root_pattern("buildServer.json", "*.xcodeproj", "*.xcworkspace", ".git", "Package.swift"),
+        })
 
         require("fidget").setup({})
         require("mason").setup()

@@ -69,6 +69,7 @@ return {
                 'yamlls',
                 'bashls',
                 'ocamllsp',
+                'typescript-language-server'
             },
             handlers = {
                 function(server_name) -- default handler (optional)

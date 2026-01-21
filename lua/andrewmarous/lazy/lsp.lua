@@ -60,9 +60,8 @@ return {
             ensure_installed = {
                 "lua_ls",
                 'rust_analyzer',
-                'basedpyright',
+                'ty',
                 'clangd',
-                'ruff',
                 'terraformls',
                 'dockerls',
                 'docker_compose_language_service',

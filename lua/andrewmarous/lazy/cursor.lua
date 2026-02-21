@@ -1,6 +1,0 @@
--- return {
---     "reachingforthejack/cursortab.nvim",
---     build = ensure_built,
---     lazy = false,
---     priority = 1000,
--- }

@@ -57,6 +57,7 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
+                "gopls",
                 "lua_ls",
                 'rust_analyzer',
                 'ty',
@@ -67,7 +68,8 @@ return {
                 'yamlls',
                 'bashls',
                 'ocamllsp',
-                'ts_ls'
+                'ts_ls',
+                'zls',
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -90,7 +92,11 @@ return {
                 zls = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.zls.setup({
-                        root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
+                        single_file_support = true,
+                        root_dir = function ()
+                            local root = lspconfig.util.root_pattern(".git", "build.zig", "zls.json")
+                            return root or vim.fs.dirname(fname)
+                        end,
                         settings = {
                             zls = {
                                 enable_inlay_hints = true,
@@ -204,6 +210,13 @@ return {
             update_in_insert = true,
             underline = true,
             severity_sort = true,
+        })
+
+        -- start up zls in Cerebrus files
+        vim.filetype.add({
+            extension = {
+                csl = "zig",
+            }
         })
     end
 

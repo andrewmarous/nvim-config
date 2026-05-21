@@ -44,14 +44,15 @@ autocmd({"BufWritePre"}, {
     command = [[%s/\s\+$//e]],
 })
 
-autocmd('BufEnter', {
-    group = AndrewMarousGroup,
-    callback = function()
-        if vim.bo.filetype == "zig" then
-            vim.cmd.colorscheme("tokyonight-night")
-        end
-    end
-})
+-- fade bad color scheme
+-- autocmd('BufEnter', {
+--     group = AndrewMarousGroup,
+--     callback = function()
+--         if vim.bo.filetype == "zig" then
+--             vim.cmd.colorscheme("tokyonight-night")
+--         end
+--     end
+-- })
 
 
 autocmd('LspAttach', {
@@ -81,3 +82,6 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
+-- putting this here cuz I have nowhere better to use it
+vim.treesitter.language.register('zig', 'zig')
+vim.treesitter.language.register('zig', 'csl')

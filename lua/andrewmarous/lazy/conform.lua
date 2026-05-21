@@ -9,7 +9,7 @@ return {
                 c = { 'clang-format' },
                 cpp = { 'clang-format' },
                 rust = { 'rustfmt' },
-                python = { 'isort', 'black' },
+                python = { 'uv run ruff fmt' },
                 typescript = { 'prettierd' },
                 terraform = { 'terraform_fmt' },
             },

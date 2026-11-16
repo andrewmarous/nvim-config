@@ -69,6 +69,7 @@ return {
                 'bashls',
                 'ocamllsp',
                 'ts_ls',
+                'jls'
             },
             handlers = {
                 function(server_name) -- default handler (optional)
